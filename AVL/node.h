@@ -9,7 +9,6 @@ class Node
         T getValue() const;
         Node<T> *m_left;
         Node<T> *m_right;
-
     private:
         T m_value;
 };
