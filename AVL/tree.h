@@ -12,7 +12,7 @@ class Tree {
         void preorder();
         void inorder();
         void postorder();
-        void _delete(Node<T> const &obj);
+        void _delete(T const &obj);
         int height() const;
         Node<T>* find(T const &value) const;
     private:
@@ -31,6 +31,7 @@ class Tree {
         int balance_factor(Node<T> *node) const;
         Node<T>* balancing(Node<T> *node);
         Node<T>* insert(Node<T>* &node,T const &value);
+        void _delete(Node<T>* &node,T const &value);
         void deleteTree(Node<T> *node);
 };
 

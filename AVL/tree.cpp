@@ -167,7 +167,7 @@ Node<T>* Tree<T>::find(T const& value) const
     {
         nodeValue = temp->getValue();
         if(nodeValue == value) return temp;
-        if(value >nodeValue)
+        if(value > nodeValue)
         {
             temp = temp->m_right;
         }
@@ -177,4 +177,53 @@ Node<T>* Tree<T>::find(T const& value) const
         }
     }
     return nullptr;
+}
+template<class T>
+void Tree<T>::_delete(Node<T> * &node,T const &value)
+{
+    if(node == nullptr) return ;
+    if(node->getValue() == value) 
+    {
+        if(node->isLeaf())
+        {
+            delete node;
+            node = nullptr;
+            return ;
+        }
+        else
+        {   Node<T>* temp = node->isHaveOneChild(); 
+            if(temp != nullptr)
+            {
+                node->setValue(temp->getValue());
+                delete temp;
+                temp = nullptr;
+                return ;
+            }
+            else
+            {
+                Node<T>* pred = node->predecessor();
+                node->setValue(pred->getValue());
+                delete pred;
+                pred = nullptr;
+                return ;
+            }
+        }
+    }
+    if(value > node->getValue())
+    {
+        _delete(node->m_right,value);
+        node = balancing(node);
+        return;
+    }
+    else
+    {
+        _delete(node->m_left,value);
+        node = balancing(node);
+        return;
+    }
+}
+template<class T>
+void Tree<T>::_delete(T const &obj)
+{
+    _delete(m_root,obj);
 }

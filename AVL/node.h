@@ -9,6 +9,11 @@ class Node
         T getValue() const;
         Node<T> *m_left;
         Node<T> *m_right;
+        bool isLeaf() const;
+        //check is node have one chalid and return pointer on it
+        Node<T>* isHaveOneChild() const;
+        Node<T>* predecessor() const;
+
     private:
         T m_value;
 };

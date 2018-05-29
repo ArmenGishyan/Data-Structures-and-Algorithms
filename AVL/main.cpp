@@ -13,6 +13,8 @@ int main()
     tree.insert(4);
     tree.insert(3);
     tree.insert(2);
+    tree._delete(2);
+    tree._delete(3);
   
     std::cout<<"h = "<<tree.height()<<"\n";
     std::cout<<"value="<<tree.find(4)->getValue()<<"\n";
